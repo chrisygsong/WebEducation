@@ -11,6 +11,25 @@
                 $("#input_pwd").val("");
             }
 
+            function IsCheckedSpecialCharater(inputData) {
+                var strRegx = /[~!@\#$%^&*\()\-=+_']/gi;
+
+                if(strRegx.test(inputData) == true) { //특수문자가 포함되면 삭제하여 값으로 다시셋팅
+                    alert("The id can not use special characters!!");
+                    $("#input_id").val(inputData.replace(strRegx, ""));
+                }
+            }
+
+            function IsCheckedInputTextLength(inputData) {
+                var textLength = inputData.length;
+
+                if (textLength > 20)
+                {
+                    alert("Enter the number exceeds the limit 20!!");
+                    $("#input_id").val(inputData.substring(0, textLength - 1));
+                }
+            }
+
             $("#button_login").click(function(event) {
 
                 var id = $("#input_id").val();
@@ -27,6 +46,13 @@
                     alert("The id is not registerd");
                     InitializeInputText();
                 }
+            });
+
+            $("#input_id").bind("keyup",function(){
+                var id = $("#input_id").val();
+
+                IsCheckedSpecialCharater(id);
+                IsCheckedInputTextLength(id);
             });
         });
     </script>
