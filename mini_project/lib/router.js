@@ -1,5 +1,7 @@
 Router.configure({
-	layoutTemplate: 'layout'
+	layoutTemplate: 'layout',
+	loadingTemplate: 'loading',
+	wainOn: function() { return Meteor.subscribe('posts'); }
 });
 
 Router.map(function() {
