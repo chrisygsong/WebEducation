@@ -1,3 +1,3 @@
-Accounts.ui.confi({
+Accounts.ui.config({
 	passwordSignupFields: 'USERNAME_ONLY'
 });
